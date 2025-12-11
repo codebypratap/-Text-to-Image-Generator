@@ -1,0 +1,122 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block contents %}
+
+<style>
+    /* HERO SECTION */
+    .hero-section {
+        width: 100%;
+        padding: 120px 0 140px 0;
+        background: linear-gradient(135deg, #0e141a, #0d1f17, #0a151f);
+        color: #fff;
+        overflow: hidden;
+    }
+
+    /* Glass container */
+    .hero-glass {
+        background: rgba(255, 255, 255, 0.08);
+        border-radius: 20px;
+        padding: 50px 40px;
+        backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        box-shadow: 0 0 35px rgba(0,255,163,0.20);
+        animation: fadeUp 1s ease-in-out;
+    }
+
+    @keyframes fadeUp {
+        from { opacity: 0; transform: translateY(35px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero-title {
+        font-size: 34px;
+        font-weight: 800;
+        line-height: 1.4;
+        background: linear-gradient(90deg, #00ffa3, #61ffd3);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        margin-bottom: 25px;
+    }
+
+    .hero-desc {
+        font-size: 17px;
+        font-weight: 400;
+        opacity: 0.9;
+        color: #d8fff1;
+        margin-bottom: 30px;
+    }
+
+    /* Button */
+    .hero-btn {
+        background: linear-gradient(135deg, #00ffa3, #00d48a);
+        padding: 14px 26px;
+        border-radius: 10px;
+        border: none;
+        font-weight: 700;
+        color: #000;
+        box-shadow: 0 0 18px rgba(0,255,163,0.45);
+        transition: 0.3s ease;
+    }
+
+    .hero-btn:hover {
+        box-shadow: 0 0 25px rgba(0,255,163,0.75);
+        transform: translateY(-2px);
+        cursor: pointer;
+    }
+
+    /* Image */
+    .hero-img-box img {
+        width: 100%;
+        border-radius: 20px;
+        box-shadow: 0 0 40px rgba(0,255,163,0.15);
+        transition: 0.35s ease;
+    }
+
+    .hero-img-box img:hover {
+        transform: scale(1.03);
+        box-shadow: 0 0 55px rgba(0,255,163,0.35);
+    }
+
+    /* Mobile adjustments */
+    @media (max-width: 992px) {
+        .hero-title { font-size: 28px; }
+    }
+</style>
+
+
+<!-- HERO SECTION -->
+<section class="hero-section">
+    <div class="container">
+        <div class="hero-glass">
+            <div class="row align-items-center">
+
+                <!-- Text -->
+                <div class="col-xl-6 col-lg-6 col-md-12 mb-4">
+                    <h1 class="hero-title">
+                        Implementation of Text-to-Image Generators to Enhance Web Interface Usability
+                    </h1>
+
+                    <p class="hero-desc">
+                        Explore how next-generation Text-to-Image AI transforms modern web design by enabling rapid,
+                        intuitive, and visually appealing interface creation.
+                    </p>
+
+                    <a href="{% url 'UserLogin' %}">
+                        <button class="hero-btn">Get Started</button>
+                    </a>
+                </div>
+
+                <!-- Image -->
+                <div class="col-xl-6 col-lg-6 col-md-12">
+                    <div class="hero-img-box">
+                        <img src="{% static 'images/generated_image.png' %}" alt="AI Generated">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

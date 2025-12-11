@@ -1,0 +1,137 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block contents %}
+
+<style>
+    /* Page Background */
+    .user-login-bg {
+        background: radial-gradient(circle at top, #12161f, #0a0c10);
+        padding: 100px 0 120px 0;
+        min-height: 85vh;
+    }
+
+    /* Main Glass Card */
+    .user-login-card {
+        background: rgba(255, 255, 255, 0.08);
+        backdrop-filter: blur(12px);
+        border-radius: 18px;
+        padding: 40px 35px;
+        box-shadow: 0 0 35px rgba(0, 255, 163, 0.20);
+        border: 1px solid rgba(255,255,255,0.10);
+        animation: fadeInUp 1s ease-out;
+        transition: 0.3s ease;
+    }
+
+    .user-login-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 0 45px rgba(0, 255, 163, 0.30);
+    }
+
+    @keyframes fadeInUp {
+        from { opacity: 0; transform: translateY(35px); }
+        to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Login Title */
+    .login-heading {
+        font-size: 30px;
+        font-weight: 700;
+        text-align: center;
+        margin-bottom: 30px;
+        background: linear-gradient(90deg, #00ffa3, #61ffd3);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        text-shadow: 0 0 8px rgba(0,255,163,0.3);
+    }
+
+    /* Inputs */
+.user-login-card input {
+    background: rgba(0, 0, 0, 0.35);   /* darker for better readability */
+    border: 1px solid rgba(0,255,163,0.25);
+    color: #b8ffe7 !important;        /* brighter text */
+    border-radius: 10px;
+    padding: 13px;
+    margin-bottom: 18px;
+    transition: 0.25s ease;
+    font-weight: 600;
+}
+
+/* Placeholder color */
+.user-login-card input::placeholder {
+    color: #a7e9d3;
+    opacity: 0.9;
+}
+
+.user-login-card input:focus {
+    background: rgba(0, 0, 0, 0.45);  /* slightly lighter on focus */
+    box-shadow: 0 0 12px rgba(0,255,163,0.55);
+    outline: none;
+}
+
+
+    /* Button */
+    .user-login-btn {
+        width: 100%;
+        padding: 14px;
+        background: linear-gradient(135deg, #00ffa3, #00d48a);
+        border: none;
+        color: #000;
+        font-weight: 800;
+        border-radius: 10px;
+        letter-spacing: 0.5px;
+        box-shadow: 0 0 18px rgba(0,255,163,0.45);
+        transition: 0.3s ease;
+    }
+
+    .user-login-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 0 25px rgba(0,255,163,0.75);
+    }
+
+    /* Minor Text */
+    .login-extra {
+        margin-top: 15px;
+        text-align: center;
+        color: #b9ffe7;
+        font-size: 14px;
+    }
+
+    .login-extra a {
+        color: #00ffa3;
+        font-weight: 600;
+    }
+</style>
+
+
+<!-- USER LOGIN CONTENT -->
+<div class="user-login-bg">
+    <div class="container d-flex justify-content-center">
+        <div class="col-xl-4 col-lg-5 col-md-6 col-sm-10">
+
+            <div class="user-login-card">
+
+                <h2 class="login-heading">User Login</h2>
+
+                <form action="{% url 'UserLoginCheck' %}" method="POST">
+                    {% csrf_token %}
+
+                    <input class="form-control" type="text" name="loginid" placeholder="Login ID" required>
+
+                    <input class="form-control" type="password" name="pswd" placeholder="Password" required>
+
+                    <button class="user-login-btn" type="submit">Login</button>
+
+                </form>
+
+                <p class="login-extra">
+                    Don't have an account?
+                    <a href="{% url 'UserRegister' %}">Register</a>
+                </p>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
